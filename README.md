@@ -6,9 +6,9 @@
 
 [1. 클래스와 인터페이스](https://github.com/KoGaYoung/TS-study/blob/main/%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
 
-[3. 제너릭타입]
+[2. 제너릭타입]
 
-[4. ts-pattern]
+[3. ts-pattern]
 
 ---
 
@@ -19,4 +19,4 @@
 |no|난이도|링크|키워드|
 |---|:---|:---:|---:|
 |1|<img src="https://img.shields.io/badge/warm--up-1-teal" alt="1"/> | [13.Hello World](./challenge/13-hello-world.md) | - |
-|2|내용 2|내용 3|내용 4|
+|2|<img src="https://img.shields.io/badge/easy-13-7aad0c" alt="13"/>|[4.pick]()|일부 추출|
