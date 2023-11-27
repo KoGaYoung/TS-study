@@ -3,7 +3,7 @@
 
 ---
 ## 타입스크립트 딥다이브
-[1.	기본타입 vs 인터페이스] ()
+[1.	기본타입 vs 인터페이스](https://github.com/KoGaYoung/TS-study/blob/main/%ED%83%80%EC%9E%85%20vs%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
 ~~~
 1. 차이, 각각 언제 사용하는지
 2. 호출 시그니처(call signature)
