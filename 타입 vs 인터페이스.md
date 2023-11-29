@@ -20,7 +20,7 @@ const testArray2: Array<string> = ['test1', 'test2'];
 ~~~typescript
 // 2. 열거(Enum)
 // 이넘은 생각보다 중요합니다.
-// 기획된 상태 값 표현할 때 많이 사용함 (특히 select 할 수 있는 inputBox 구성 시 사용)
+// 기획된 상태 값 표현할 때 많이 사용함 (특히 진행 상태, select 할 수 있는 inputBox 구성 시 사용했었음)
 enum day {Monday, Tusday, Wndsday};
 console.log(day.Monday); // 0 으로 자동 초기화됨
 
@@ -71,41 +71,118 @@ const buildingNames: TBuildingNames = {
 
 ~~~typescript
 // 3. Any
-// 타입 검사 패스, 외부 꺼(서드파티) 사용할 때 유용
+// 타입 검사 패스, 외부 꺼(서드파티) 사용할 때 사용
 // 대부분의 eslint 설정 시 기본값이 any 쓰지말라고 하는데 꼭 써야하는경우 해당 문장만 패스하게 만들어 쓴다.
+const thirdParty: any;
 
 // 4. void
 // 함수 리턴이 없을 때 사용 (유용한 것을 반환하지 않는다는 뜻)
+type func1 = () => void;
 ~~~
 
 ~~~typescript
 // 5. Never
 // 아무 것도 없는 양을 나타낼 때 0을 쓰는 것처럼, 불가능을 나타내는 타입
+// 네버는 알면 무조건 도움이 된다!
+
+// 언제 사용될까
 1. 값을 포함할 수 없는 빈타입
  - 제네릭에서 허용하지 않는 매개변수가 왔을 때
  - 호환되지 않는 교차타입
 2. 실행이 끝날 때 까지 호출자에게 제어를 반환하지 않는타입
-ex. Node의 process.exit
-3. 절대 도달할 수 없는 조건
+ ex. Node의 process.exit
+3. 절대 도달할 수 없는 else 조건
 4. 거부된 프로미스에서 처리된 값
-ex. const p = Promise.reject('foo') // const p: Promise<never>
-https://ui.toast.com/posts/ko_20220323
+ex. const promise1 = Promise.reject('foo') // const p: Promise<never>
 
+// 활용을 알아보기 전에 never의 특징을 알아보자
+// 0 + number = number 유니언('|')에서 never는 없어짐
+type resUnion = never | string; // string
+// 0 * number = 0 교차('&')에서는 덮어쓴다
+type resCross = never & string; // never
+
+// 실 활용
+// 1. switch나 if-else 문 모든상황 보장 (절대 도달할 수 없는 else 조건)
+function unknownSometihng(animal: never) : never {
+  throw new Error("unknownSometihng");
+}
+
+type TAnimal = 'dog' | 'cat';
+
+function divideAnimal(animal: TAnimal): string {
+  switch (animal) {
+    case 'cat':
+      return 'it it cat';
+    case 'dog':
+      return 'it is dog';
+    default:
+      return unknownSometihng(animal)
+  }
+}
+
+// 2. 부분 타이핑 허용 안함
+type aPerson = {
+  a: number;
+}
+
+type bPerson = {
+  b: number;
+}
+
+// 함수 선언, param은 APerson 또는 bPerson으로 유니언('|') 사용
+declare function fn(param: aPerson | bPerson) : void;
+
+fn({a: 0, b: 1}); // 오류 안남
+
+// ---
+// 구조적 타이핑 비활성화 -> 두 속성 모두 포함하는 객체 전달 불가능
+type aPerson1 = {
+  a: number;
+  b?: never;
+}
+type bPerson1 = {
+  a?: never;
+  b: number;
+}
+
+declare function fn1(param: aPerson1 | bPerson1) : void;
+fn1({a: 1, b:1}); // 오류남
+
+// 유니언 타입에서 멤버 추출할 때 else 문에 사용됨
+type aPerson = {
+  name: 'aName';
+  a: number;
+}
+
+type bPerson = {
+  name: 'bName';
+  b: number;
+}
+
+type TAllPerson = aPerson | bPerson;
+
+type extractTypeByName<T, G> = T extends {name: G} ? T : never;
+
+type aType = extractTypeByName<TAllPerson, 'aName'>; // aType = aPerson 타입
+~~~
+
+~~~typescript
 // 6. 타입 단언(Type assertions)
-// input 데이터 select 했을 때 타입값 어썰션 해줬던 기억이 난다...
-// 하지만 앞으로는 위 enum 처럼 선언해서 사용할 것이다..
-// 위 예제에서 value를 안만들어주고, value.split('-')[1] 이렇게 쓸 경우,
+// 위 예제에서 value를 안만들어주고, value.split('-')[1] 이렇게 쓸 경우
 // 우리는 "0-아파트" 나 "1-주택/빌라" 만 올거라고 알지만, 컴퓨터는 모른다.
-// 이때는 아래처럼 value는 EBuilding 라고 단언하는 것이다
+// 이때는 아래처럼 value는 EBuilding 라고 단언해서 타입 오류를 피할 수 있다.
+
 const value = event.target.value as EBuilding;
+
+// 하지만 앞으론 enum을 활용해서 사용할것이다. - _-+
 ~~~
 
 ## 1. type vs interface 
 ~~~typescript
-둘 다 타입 정의하는데 사용 됨.
+// 타입, 인터페이스 둘 다 타입 정의하는데 사용 됨.
 
-타입: 타입 정의 시 사용. 유니온(|)이나 인터섹션(&)으로 타입 조합, 타입 조건 사용 가능(위 매핑 타입예제)
-(조건부 타입: T extends U ? X : Y, T가 U에 포함될 경우 경우 X, 아닌경우 Y)
+// 타입: 타입 정의 시 사용. 유니온(|)이나 교차(&)으로 타입 조합, 타입 조건 사용 가능(위 매핑 타입예제)
+// (조건부 타입: T extends U ? X : Y, T가 U에 포함될 경우 경우 X, 아닌경우 Y)
 
 type sick = {
    headache: booelan;
