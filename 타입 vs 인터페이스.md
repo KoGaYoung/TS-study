@@ -10,7 +10,7 @@
 
 ## 기본 타입들을 훑어보자
 ~~~typescript
-// 불리언(boolean), 숫자(number), 문자열(string) 생략
+// 불리언(boolean), 숫자(number), 문자열(string) 생략
 
 // 1. 배열(Array)
 const testArray1: string[] = ['test1', 'test2']; // 이게 더 가독성 좋음
@@ -97,6 +97,8 @@ type func1 = () => void;
 ex. const promise1 = Promise.reject('foo') // const p: Promise<never>
 
 // 활용을 알아보기 전에 never의 특징을 알아보자
+// 유니언('|')은 A or B를 나타내고 교차('&')는 모두를 만족하는 새로운 타입을 나타낸다.
+
 // 0 + number = number 유니언('|')에서 never는 없어짐
 type resUnion = never | string; // string
 // 0 * number = 0 교차('&')에서는 덮어쓴다
@@ -194,8 +196,8 @@ type newSick = sick & { // 같은 이름 사용시 오류나요
   toothache: booelan;
 }
 
-// 인터페이스: 복잡한 객체 구조 정의 시 사용. 확장(상속) 가능 -> 클래스가 상속받아 구현하도록 강제
-// 같은 이름 선언 시 병합도 됨
+// 인터페이스: 복잡한 객체 구조 정의 시 사용. 확장(상속) 가능 -> 클래스가 상속받아 구현하도록 강제
+// 같은 이름 선언 시 병합도 됨
 // 상속을 해야하는 객체의 경우 extends 키워드 사용시 캐싱하여 성능상 유리하다
 // 대고객 서비스에서는 인터페이스를 기본적으로 사용하는것을 선호한다.
 interface sick {
@@ -211,7 +213,7 @@ interface sick {
 
 ## 2. 호출 시그니처(call signature) 
 ~~~typescript
-// 함수에 커서를 가져다대면 나타내는 파라미터와 리턴값의 타입을 호출시그니처라고 한다. (나름의 다형성)
+// 함수에 커서를 가져다대면 나타내는 파라미터와 리턴값의 타입을 호출시그니처라고 한다. (나름의 다형성을 구현함)
 
 type Tfunction = (a: number, b:number) => void;
 
@@ -232,5 +234,66 @@ const iSecondFunc: Ifunction = function (a, b) { console.log(a+b); };
 
 ## 3. 인덱스 시그니처(index signature)
 ~~~typescript
+// 객체의 인덱스 타입을 정의할 때 사용
+// 키 이름은 다를 수 있지만 동일한 값을 리턴할 때 유용
 
+type TResponse = {
+  [key: string] : string;
+}
+
+interface IResponse {
+  [key: string] : string;
+}
+
+const apiResponse: IResponse = {
+  name: 'gayoung',
+  id: '1',
+  address: 'guro'
+} 
+~~~
+
+## 4. 중첩 인터페이스
+~~~typescript
+// 인터페이스 안에 인터페이스 사용하는것
+// 필요에 따라 적절하게 나누면 구조적으로 가독성, 재사용성, 유지보수성 좋아짐
+
+interface IAddress {
+  street: string;
+  zipcode: string;
+}
+
+interface IWorker {
+  name: string;
+  phone: string;
+  homeAddress: IAddress; // 집주소
+  workAddress: IAddress; // 회사주소
+}
+~~~
+
+## 5. 다중 인터페이스 확장
+~~~typescript
+// extends 뒤에 여러개가 올 수 있다.
+// 사람정보
+interface IPerson {
+  name: number; // 이름
+  address: IAddress; //주소
+  phone: string; // 전화번호
+}
+
+// 경력정보
+interface ICareer {
+  workYear: number; // 경력
+  workSpace: string; // 근무지
+}
+
+// 이력서 (IPerson과 ICarrer는 IPerson, ICareer 모든 조건을 만족해야하니까 교차타입('&')으로 동작
+interface IResume extends IPerson, ICareer {
+  privacyAgree: boolean; // 개인정보 제공 동의
+}
+~~~
+
+## 6. 인터페이스 병합
+~~~typescript
+// 위에서 이미 정리한 내용.
+// 유연성과 확장성을 높여주지만, 가독성이 안좋아지고 명확성이 떨어지기때문에 같은이름의 인터페이스를 두는것을 나는 꼭 필요한 경우가 아니라면 비선호한다.
 ~~~
