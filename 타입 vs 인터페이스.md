@@ -90,8 +90,7 @@ type func1 = () => void;
 1. 값을 포함할 수 없는 빈타입
  - 제네릭에서 허용하지 않는 매개변수가 왔을 때
  - 호환되지 않는 교차타입
-2. 실행이 끝날 때 까지 호출자에게 제어를 반환하지 않는타입
- ex. Node의 process.exit
+2. 실행이 끝날 때 까지 호출자에게 제어를 반환하지 않는타입  ex. Node의 process.exit
 3. 절대 도달할 수 없는 else 조건
 4. 거부된 프로미스에서 처리된 값
 ex. const promise1 = Promise.reject('foo') // const p: Promise<never>
@@ -230,6 +229,22 @@ interface Ifunction {
 const iFirstFunc: Ifunction = (a, b) => { console.log('first'); };
 
 const iSecondFunc: Ifunction = function (a, b) { console.log(a+b); };
+
+// ---
+// 선택적 파라미터가 있다면 이렇게도 쓸 수 있어요
+type Tfunction = {
+  (a: number, b:number) :  void;
+  (a: number, b:number, c: number ) : void;
+}
+
+const typeFunction: Tfunction = (a, b, c?: number) => {
+  if (c) {
+    console.log(a + b + c);
+  }
+  else {
+    console.log(a+b);
+  }
+}
 ~~~
 
 ## 3. 인덱스 시그니처(index signature)
