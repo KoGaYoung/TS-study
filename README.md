@@ -3,12 +3,11 @@
 
 ---
 ## 타입스크립트 딥다이브
-[1.	타입 애너테이션과 인터페이스 (12/09)] ()
+[1.	타입 애너테이션 (12/09)](https://github.com/KoGaYoung/TS-study/blob/main/%ED%83%80%EC%9E%85%20%EC%95%A0%EB%84%88%ED%85%8C%EC%9D%B4%EC%85%98%EA%B3%BC%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
 ~~~
 1. 기본타입
-2. 인터페이스 사용 시나리오
-3. 읽기 전용 속성
-4. 선택적 속성
+2. 읽기 전용 속성
+3. 선택적 속성
 ~~~
 
 [2.	타입 vs 인터페이스 (12/09)](https://github.com/KoGaYoung/TS-study/blob/main/%ED%83%80%EC%9E%85%20vs%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
