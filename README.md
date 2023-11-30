@@ -3,7 +3,7 @@
 
 ---
 ## 타입스크립트 딥다이브
-[1.	타입 애너테이션 (12/09)](https://github.com/KoGaYoung/TS-study/blob/main/%ED%83%80%EC%9E%85%20%EC%95%A0%EB%84%88%ED%85%8C%EC%9D%B4%EC%85%98%EA%B3%BC%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
+[1.	타입 애너테이션 (12/09)](https://github.com/KoGaYoung/TS-study/blob/main/%ED%83%80%EC%9E%85%20%EC%95%A0%EB%84%88%ED%85%8C%EC%9D%B4%EC%85%98.md)
 ~~~
 1. 기본타입
 2. 읽기 전용 속성
