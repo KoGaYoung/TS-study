@@ -130,7 +130,7 @@ interface ICareer {
   workSpace: string; // 근무지
 }
 
-// 이력서 (IPerson과 ICarrer는 IPerson, ICareer 모든 조건을 만족해야하니까 교차타입('&')으로 동작
+// 이력서 (IResume는 IPerson, ICareer 모든 조건을 만족해야하니까 교차타입('&')으로 동작한다고 할 수 있음
 interface IResume extends IPerson, ICareer {
   privacyAgree: boolean; // 개인정보 제공 동의
 }
