@@ -20,7 +20,7 @@
 6. 인터페이스 병합
 ~~~
 
-[3.	함수 (12/09)] ()
+[3.	함수 (12/09)](https://github.com/KoGaYoung/TS-study/blob/main/%ED%95%A8%EC%88%98.md)
 ~~~
 1. this와 화살표함수
 2. 나머지 매개변수 (Rest Parameters)
