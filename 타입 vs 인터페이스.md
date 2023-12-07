@@ -42,6 +42,8 @@ interface sick {
 ## 2. 호출 시그니처(call signature) 
 ~~~typescript
 // 함수에 커서를 가져다대면 나타내는 파라미터와 리턴값의 타입을 호출시그니처라고 한다. (나름의 다형성을 구현함)
+
+// -- type
 type Tfunction = (a: number, b:number) => void;
 
 // a, b 타입 지정 안해줘도됨
@@ -50,6 +52,7 @@ const firstFunc: Tfunction = (a, b) => { console.log('first'); };
 // es5 function 형태로도 쓸 수 있다.(const 변수에 함수를 저장하는 익명함수(함수 표현식) 형태로만 사용가능)
 const secondFunc: Tfunction = function(a, b) { console.log(a+b); };
 
+// -- interface
 interface Ifunction {
   (a: number, b:number): void;
 }
