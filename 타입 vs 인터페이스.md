@@ -11,7 +11,8 @@
 ## 1. type vs interface 
 ~~~typescript
 // 타입, 인터페이스 둘 다 타입 정의하는데 사용 됨.
-
+~~~
+~~~typescript
 // 타입: 간단한 타입 정의 시 사용. 재사용이 적은 경우에 사용
 // 유니온(|)이나 교차(&)으로 타입 조합, 타입 조건 사용 가능(위 매핑 타입예제)
 // (조건부 타입: T extends U ? X : Y === T가 U에 포함되나요? X : Y)
@@ -23,7 +24,8 @@ type sick = {
 type newSick = sick & { // 같은 이름 사용시 오류나요
   toothache: booelan;
 }
-
+~~~
+~~~typescript
 // 인터페이스: 복잡한 객체 구조 정의 시 사용. 확장(상속) 가능 -> 클래스가 상속받아 구현하도록 강제
 // 같은 이름 선언 시 병합도 됨
 // 상속을 해야하는 객체의 경우 extends 키워드 사용시 캐싱하여 성능상 유리하다
@@ -42,8 +44,9 @@ interface sick {
 ## 2. 호출 시그니처(call signature) 
 ~~~typescript
 // 함수에 커서를 가져다대면 나타내는 파라미터와 리턴값의 타입을 호출시그니처라고 한다. (나름의 다형성을 구현함)
-
-// -- type
+~~~
+~~~typescript
+// type
 type Tfunction = (a: number, b:number) => void;
 
 // a, b 타입 지정 안해줘도됨
@@ -51,8 +54,9 @@ const firstFunc: Tfunction = (a, b) => { console.log('first'); };
 
 // es5 function 형태로도 쓸 수 있다.(const 변수에 함수를 저장하는 익명함수(함수 표현식) 형태로만 사용가능)
 const secondFunc: Tfunction = function(a, b) { console.log(a+b); };
-
-// -- interface
+~~~
+~~~typescript
+// interface
 interface Ifunction {
   (a: number, b:number): void;
 }
@@ -60,8 +64,8 @@ interface Ifunction {
 const iFirstFunc: Ifunction = (a, b) => { console.log('first'); };
 
 const iSecondFunc: Ifunction = function (a, b) { console.log(a+b); };
-
-// ---
+~~~
+~~~typescript
 // 선택적 파라미터가 있다면 이렇게도 쓸 수 있어요
 type Tfunction = {
   (a: number, b:number) :  void;
@@ -81,7 +85,7 @@ const typeFunction: Tfunction = (a, b, c?: number) => {
 ## 3. 인덱스 시그니처(index signature)
 ~~~typescript
 // 객체의 인덱스 타입을 정의할 때 사용
-// 키 이름은 다를 수 있지만 동일한 값을 리턴할 때 유용
+// 키 이름은 다를 수 있지만 동일한 값을 리턴할 때 활용
 
 type TResponse = {
   [key: string] : string;
