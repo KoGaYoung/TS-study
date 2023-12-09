@@ -22,6 +22,7 @@
 
 [3.	함수 (12/09)](https://github.com/KoGaYoung/TS-study/blob/main/%ED%95%A8%EC%88%98.md)
 ~~~
+0. 함수 리턴타입, 파라미터, Await 활용(실전)
 1. this와 화살표함수
 2. 나머지 매개변수 (Rest Parameters)
 3. 콜백에서 this 매개변수
