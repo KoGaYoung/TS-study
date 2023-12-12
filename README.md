@@ -28,7 +28,7 @@
 3. 콜백에서 this 매개변수
 4. 오버로드
 ~~~
-[4.	유니언과 교차타입] ()
+[4.	유니언과 교차타입](https://github.com/KoGaYoung/TS-study/blob/main/%EC%9C%A0%EB%8B%88%EC%96%B8%EA%B3%BC%20%EA%B5%90%EC%B0%A8%ED%83%80%EC%9E%85.md)
 ~~~
 1. 유니언 타입과 교차 타입의 사용 사례
 2. 유니언 타입에서의 타입 가드
