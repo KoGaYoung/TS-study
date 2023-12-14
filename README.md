@@ -86,3 +86,5 @@
 |2|<img src="https://img.shields.io/badge/easy-7-7aad0c" alt="13"/>|[7.readonly](./challenge/7-readonly.md)|readonly key-value|
 
 
+## practice 
+함수 리턴 타입, 파라미터, Awaited의 활용 [문제, 풀이]()
