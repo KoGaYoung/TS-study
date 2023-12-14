@@ -83,7 +83,8 @@
 |---|:---|:---:|---:|
 |1|<img src="https://img.shields.io/badge/warm--up-1-teal" alt="1"/> | [13.Hello World](./challenge/13-hello-world.md) | - |
 |2|<img src="https://img.shields.io/badge/easy-4-7aad0c" alt="13"/>|[4.pick](./challenge/4-pick.md)|부분집합 검사|
-|2|<img src="https://img.shields.io/badge/easy-7-7aad0c" alt="13"/>|[7.readonly](./challenge/7-readonly.md)|readonly key-value|
+|3|<img src="https://img.shields.io/badge/easy-7-7aad0c" alt="13"/>|[7.readonly](./challenge/7-readonly.md)|readonly key-value|
+|3|<img src="https://img.shields.io/badge/easy-43-7aad0c" alt="13"/>|[7.readonly](./challenge/43-exclude.md)|Union, Exclude|
 
 
 ## practice 
