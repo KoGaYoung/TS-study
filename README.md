@@ -87,4 +87,4 @@
 
 
 ## practice 
-함수 리턴 타입, 파라미터, Awaited의 활용 [문제, 풀이]()
+함수 리턴 타입, 파라미터, Awaited의 활용 [문제, 풀이](./challenge/함수_리턴_타입,_파라미터,_Awaited의_활용.md)
