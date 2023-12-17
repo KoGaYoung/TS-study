@@ -89,4 +89,5 @@
 
 ## practice 
 함수 리턴 타입, 파라미터, Awaited의 활용 [문제, 풀이](./challenge/함수_리턴_타입,_파라미터,_Awaited의_활용.md) <br/>
-Union_추출, 제외 [문제, 풀이](./challenge/Union_extract_excloude.md)
+Union_추출, 제외 [문제, 풀이](./challenge/Union_extract_excloude.md) <br/>
+제네릭 [문제, 풀이](./challenge/제네릭.md) <br/> 
