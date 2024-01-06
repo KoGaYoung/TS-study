@@ -23,6 +23,8 @@ ex.
 => 선언형으로 가기위해서는 '어떻게 접근하는가'에 관한 내용이 명령형에서 추상화 되어있어야 한다 
 
 선언형이 좋다는데! 왜좋지? 문제를 더욱 가독성있게 효율적으로 전달한다!
+예전에 이 글을 보고 명령형과 선언형을 이해하는데 큰 도움이 되었다.
+(https://pyjun01.github.io/v/declarative-ui/?trk=feed_main-feed-card_reshare_feed-article-content)
 ~~~
 ![image](https://github.com/KoGaYoung/JS-study/assets/36693355/01d12adf-3769-43ca-a893-47289d210993)
 
