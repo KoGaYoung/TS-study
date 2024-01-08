@@ -83,7 +83,6 @@
 
 ---
 
-2. 
 ## type challenges 
 [type-challenges](https://github.com/type-challenges/type-challenges) 공부하면서 풀기
 
